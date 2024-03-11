@@ -14,13 +14,38 @@ typedef signed long long s64;
 typedef float f32;
 typedef double f64;
 
-typedef struct {
-    f32 x, y;
-} Vec2f;
 
-typedef struct {
+struct Vec2f {
+    Vec2f() {
+        this->x = 0.0f;
+        this->y = 0.0f;
+    }
+
+    Vec2f(f32 newX, f32 newY) {
+        this->x = newX;
+        this->y = newY;
+    }
+    
+    f32 x, y;
+};
+
+struct Vec3f {
+    Vec3f() {
+        this->x = 0.0f;
+        this->y = 0.0f;
+        this->z = 0.0f;
+    }
+
+    Vec3f(f32 newX, f32 newY, f32 newZ) {
+        this->x = newX;
+        this->y = newY;
+        this->z = newZ;
+    }
+
     f32 x, y, z;
-} Vec3f;
+};
+
+
 
 // Signed 16-bit integer 3D vector
 typedef struct {
