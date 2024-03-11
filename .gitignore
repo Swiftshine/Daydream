@@ -1,0 +1,19 @@
+*.dol
+*.bin
+*.o
+*.xml
+*.bat
+*.map
+
+# Dependencies
+## CodeWarrior
+deps/CodeWarrior/*.exe
+deps/CodeWarrior/*.dll
+deps/CodeWarrior/license.dat
+## Kamek
+deps/Kamek/Kamek.exe
+deps/Kamek/Kamek.dll
+deps/Kamek/Kamek.runtimeconfig.json
+
+build/
+tools/demangle.py

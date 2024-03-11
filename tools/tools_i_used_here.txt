@@ -1,0 +1,1 @@
+RootCubed's CodeWarrior demangler (https://gist.github.com/RootCubed/8f8102fe6cf4ed79a45f1dfe23020a06)
