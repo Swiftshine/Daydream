@@ -1,0 +1,6 @@
+---
+Region:
+  - "USA"
+CPP:
+  - "src/hid_hacks.cpp"
+ASM: []

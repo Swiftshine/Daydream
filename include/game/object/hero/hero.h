@@ -2,14 +2,15 @@
 #define DAYDREAM_SCN_STEP_HERO_HERO_H
 
 #include <types.h>
-#include "memory/heapexp.h"
+#include "game/memory/heapexp.h"
 
 
-#include "object/hero/indiviutil.h"
-#include "object/hero/hid.h"
+#include "game/object/hero/indiviutil.h"
+#include "game/object/hero/hid.h"
 
-namespace scn::step::hero {
-
+namespace scn {
+namespace step {
+namespace hero {
     // size: 0x330
     class Hero {
     public:
@@ -38,8 +39,10 @@ namespace scn::step::hero {
         void* _0;                       // 0x0, 0x4
         HeapExp* heapExpArray;          // 0x4, 0x4
         void* _8;                       // 0x8, 0x4
-        ButtonInputFlags inputFlags;    // 0xC, 0x4
+        u32 inputFlags;                 // 0xC, 0x4
     };
-}
+} // namespace hero
+} // namespace step
+} // namespace scn
 
 #endif
