@@ -2,11 +2,12 @@
 #define DAYDREAM_SCN_STEP_HERO_HERO_H
 
 #include <types.h>
-#include "game/memory/heapexp.h"
+#include "game/memory/mem.h"
 
 
 #include "game/object/hero/indiviutil.h"
 #include "game/object/hero/hid.h"
+#include "game/object/hero/heromgr.h"
 
 namespace scn {
 namespace step {
@@ -15,7 +16,7 @@ namespace hero {
     class Hero {
     public:
         // Constructor
-        Hero(void* component, void* heapExpArray, Vec2f* unk1, Vec2f* unk2, bool unk3, void* contextHeroIndivi, void* unk4);
+        Hero(void* component, HeapExpArray* heapExpArray, Vec2f* unk1, Vec2f* unk2, bool unk3, void* contextHeroIndivi, void* unk4);
 
         // Returns the HID device.
         scn::step::hero::Hid* hid();
@@ -36,10 +37,9 @@ namespace hero {
 
     public:
         // offset, len
-        void* _0;                       // 0x0, 0x4
-        HeapExp* heapExpArray;          // 0x4, 0x4
-        void* _8;                       // 0x8, 0x4
-        u32 inputFlags;                 // 0xC, 0x4
+        void* _0;                           // 0x0, 0x4
+        mem::HeapExpArray heapExpArray;     // 0x4, 0x8
+        u32 inputFlags;                     // 0xC, 0x4
     };
 } // namespace hero
 } // namespace step
