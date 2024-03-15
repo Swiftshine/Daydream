@@ -11,14 +11,15 @@ namespace hero {
     class Hero;
 
     // Size: 0x49C
-    class HeroManager {
+    class Manager {
     public:
-        HeroManager(void* component);
+        Manager(void* component);
 
         Hero* getPlayerByIndex(u32 index);        
     public:
 
     };
+    typedef Manager HeroManager;
 }
 
 namespace Component {

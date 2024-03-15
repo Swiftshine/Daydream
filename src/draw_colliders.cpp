@@ -7,7 +7,7 @@
 
 
 // enable or disable these to your liking.
-bool enableEntityColliderViewer = false;
+bool enableEntityColliderViewer = true;
 bool enableVacuumColliderViewer = false;
 bool enableGridViewer           = false;
 bool enablePegFrameViewer       = false;

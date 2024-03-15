@@ -16,7 +16,7 @@ namespace hero {
     class Hero {
     public:
         // Constructor
-        Hero(void* component, HeapExpArray* heapExpArray, Vec2f* unk1, Vec2f* unk2, bool unk3, void* contextHeroIndivi, void* unk4);
+        Hero(void* component, mem::HeapExpArray* heapExpArray, Vec2f* unk1, Vec2f* unk2, bool unk3, void* contextHeroIndivi, void* unk4);
 
         // Returns the HID device.
         scn::step::hero::Hid* hid();
@@ -37,9 +37,9 @@ namespace hero {
 
     public:
         // offset, len
-        void* _0;                           // 0x0, 0x4
-        mem::HeapExpArray heapExpArray;     // 0x4, 0x8
-        u32 inputFlags;                     // 0xC, 0x4
+        hel::common::ScopedPtr<void>* component;    // 0x0, 0x4
+        mem::ExplicitScopedPtr<void>* _4;           // 0x0, 0x4
+        u32 inputFlags;                             // 0xC, 0x4
     };
 } // namespace hero
 } // namespace step
