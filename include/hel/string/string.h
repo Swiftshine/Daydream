@@ -6,12 +6,12 @@
 namespace hel {
 namespace common {
 
-    template<u32 StringLength>
+    template<u32 N>
     class FixedString {
     public:
         FixedString(const char* string);
     public:
-        char data[StringLength];
+        char data[N];
     };
 }
 }

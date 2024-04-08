@@ -2,7 +2,7 @@
 #define DAYDREAM_SCN_STEP_ENEMY_H
 
 #include <types.h>
-#include "game/memory/heapexp.h"
+#include "game/memory/mem.h"
 
 namespace scn {
 namespace step {
@@ -40,7 +40,8 @@ namespace enemy {
     // Size: 0x30?
     class Desc {
     public:
-        Desc(scn::step::map::BinEnemyKind kind, scn::step::map::BinEnemyVariation variation, u32 level, scn::step::map::BinEnemyDirType direction, scn::step::map::BinEnemySize sizeType, bool hasSuperAbility, bool unk2, Vec2f* position);
+        //Desc(scn::step::map::BinEnemyKind kind, scn::step::map::BinEnemyVariation variation, u32 level, scn::step::map::BinEnemyDirType direction, scn::step::map::BinEnemySize sizeType, bool hasSuperAbility, bool unk2, Vec2f* position);
+        Desc(int kind, int variation, u32 level, int direction, int sizeType, bool hasSuperAbility, bool unk2, Vec2f* position);
     public:
         u32 enemyID;        // 0x0, 0x4; "enemyKind"
         u32 behavior;       // 0x4, 0x4; "enemyVariation"
@@ -70,6 +71,18 @@ namespace enemy {
         void* _C;                       // 0xC, 0x4
         Desc properties;                // 0x10, 0x30
     };
+
+    class Manager {
+    public:
+        Manager();
+        ~Manager();
+
+        Enemy* request(void* unk, Desc* properties);
+
+    public:
+    };
+
+    typedef Manager EnemyManager;
 
 }
 }
