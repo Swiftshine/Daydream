@@ -20,7 +20,7 @@ namespace common {
         void add(T* object);
     public:
         u32 numObjects; // the number of objects in the array
-        hel::common::Array<T, N>* array; // the array
+        hel::common::Array<T, N> array; // the array
     };
 }
 }
