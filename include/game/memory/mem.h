@@ -2,6 +2,7 @@
 #define DAYDREAM_MEM_H
 
 #include <types.h>
+#include "hel/string/string.h"
 #include "revolution/types.h"
 
 namespace mem {
@@ -35,6 +36,7 @@ namespace mem {
     private:
         T* buffer;
     }
+
     // size unknown
     class HeapExp {
     public:
@@ -56,15 +58,15 @@ namespace mem {
 
 
     //template <typename T>
+    // size: 0x38
     class HeapExpArray {
     public:
 
     public:
-        union {
-            char* name;
-            void* vtable;
-        };
-        HeapExp* heapExp;
+        hel::common::FixedString<32> name;
+        mem::IAllocator* iAllocator;
+        u32 count;
+        
     };
 }
 

@@ -8,7 +8,7 @@ namespace common {
     template <typename T, u32 N>
     class Array {
     public:
-        T* getAtIndex(u32 index);
+        T& operator[](u32 index);
     public:
         T data[N];
     };
@@ -16,7 +16,7 @@ namespace common {
     template <typename T, u32 N>
     class MutableArray {
     public:
-        T* getAtIndex(u32 index);
+        T& operator[](u32 index);
         void add(T* object);
     public:
         u32 numObjects; // the number of objects in the array
