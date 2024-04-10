@@ -2,11 +2,12 @@
 #define DAYDREAM_SCN_STEP_COMPONENT_COMPONENT_H
 
 #include <types.h>
-#include "game/scn/step/hero/hero.h"
-#include "game/scn/step/enemy/enemy.h"
+
 
 namespace scn {
 namespace step {
+namespace hero { class HeroManager; }
+namespace enemy { class EnemyManager; }
     class Component {
         // Returns the hero manager
         scn::step::hero::HeroManager* heroManager();

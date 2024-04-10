@@ -4,8 +4,12 @@
 #include <types.h>
 #include "hel/array/array.h"
 #include "game/memory/mem.h"
-#include "game/scn/step/component/component.h"
+
+
+#include "game/scn/step/component.h"
 #include "game/scn/step/hero/hid.h"
+#include "game/scn/step/hero/ability.h"
+#include "game/scn/step/hero/indiviutil.h"
 
 namespace scn {
 namespace step {
@@ -15,40 +19,24 @@ namespace Constant {
     const float LIFE_BAR_LENGTH_EXTRA   =  0.6f;
 } // namespace Constant
 
-namespace IndiviUtil {
-    enum Kind {
-        HeroKind_Kirby      = 0,
-        HeroKind_Kirby2     = 1,
-        HeroKind_Kirby3     = 2,
-        HeroKind_Kirby4     = 3,
-        HeroKind_MetaKnight = 4,
-        HeroKind_KingDedede = 5,
-        HeroKind_Dee        = 6,
-    };
-
-    // Returns if the hero kind provided matches Kirby's.
-    static bool IsKirby(Kind heroKind);
-    // Returns if the hero kind provided matches Meta Knight's.
-    static bool IsMeta(Kind heroKind);
-    // Returns if the hero kind provided matches King Dedede's.
-    static bool IsDedede(Kind heroKind);
-    // Returns if the hero kind provided matches Waddle Dee's.
-    static bool IsDee(Kind heroKind);
-    // Returns if the hero kind provided is able to hover.
-    static bool CanHover(Kind heroKind);
-} // namespace IndiviUtil
-
     // size: 0x330
     class Hero {
     public:
         // Constructor
-        Hero(void* component, mem::HeapExpArray* heapExpArray, Vec2f* unk1, Vec2f* unk2, bool unk3, void* contextHeroIndivi, void* unk4);
+        Hero(scn::step::Component* component, mem::HeapExpArray* heapExpArray, Vec2f* unk1, Vec2f* unk2, bool unk3, void* contextHeroIndivi, void* unk4);
 
         // Destructor
         ~Hero();
 
+        void setupConstruct();
+
+
         // Returns the HID device.
-        scn::step::hero::Hid* hid();
+        Hid* hid();
+
+
+        void start();
+
 
         // Returns position.
         Vec2f* location();
@@ -66,10 +54,12 @@ namespace IndiviUtil {
 
     public:
         // offset, len
-        hel::common::ScopedPtr<void>* component;    // 0x0, 0x4
-        void* _4;                                   // 0x4, 0x4
-        void* _8;
+        scn::step::Component* component;
+        void* heapExpArrayUser;
+        void* _8;                                   // 0x8, 0x4
         u32 inputFlags;                             // 0xC, 0x4
+        
+        mem::ExplicitScopedPtr<AbilityManager> abilityManager; // 0x11C, 0x8
     };
 
     // Size: 0x49C
@@ -124,6 +114,8 @@ namespace IndiviUtil {
         u8 flowSoundCtrl[0x98];
     };
     typedef Manager HeroManager;
+
+
 } // namespace hero
 } // namespace step
 } // namespace scn

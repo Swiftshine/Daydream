@@ -21,7 +21,7 @@ namespace mem {
         ~ExplicitScopedPtr();
 
         // Returns data buffer
-        T* ref();
+        T* operator->();
 
     public:
     private:
@@ -32,7 +32,7 @@ namespace mem {
     template <typename T>
     class ScopedPtr {
     public:
-        T* ref();
+        T* operator->();
     private:
         T* buffer;
     }
@@ -77,15 +77,12 @@ namespace common {
     public:
 
         // Returns data buffer
-        void* ref();
+        T* operator->();
     private:
         T* buffer;
     };
 }
 }
-
-// This function is called many times.
-void* GetZeroBufferAddress(mem::ExplicitScopedPtr<void>* explicitScopedPointer);
 
 
 // custom functions
