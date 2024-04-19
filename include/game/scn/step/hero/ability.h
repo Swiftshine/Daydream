@@ -3,6 +3,7 @@
 
 #include <types.h>
 #include "game/scn/step/component.h"
+#include "game/memory/mem.h"
 
 namespace scn {
 namespace step {
@@ -81,16 +82,65 @@ namespace hero {
         scn::step::hero::Hero* hero;
     };
 
+    // size: 0x8 (?)
+    class AbilityCustomBase {
+    public:
+        AbilityCustomBase(scn::step::hero::Hero* hero);
+        ~AbilityCustomBase();
+    public:
+        void* vtable;
+        scn::step::hero::Hero* hero;
+    };
+
     // size: 0x68
     class AbilityManager {
     public:
         AbilityManager(scn::step::hero::Hero* hero, void* heapExpArrayUser);
         ~AbilityManager();
 
-        bool haveAbility(scn::step::hero::Hero* hero);
+        /* 'fuel' refers to the length of time (in milliseconds)
+            a super ability can be used. think of it as a timer.*/
+
+        // Initialises the super ability timer
+        void initFuel();
+        // Set the ability timer
+        void setFuel(int fuel);
+        // Decreases the super ability timer by specified amount
+        void decFuel(int amount);
+
+        // Returns if the hero currently has an ability
+        bool haveAbility();
         void clearAbilityCore(bool unk);
+
+        // Clears the ability
+        void clearAbility();
+
+        // Forcibly clears the current ability
+        void clearAbilityForce();
+
+        // Changes the ability if possible
+        void reserveChangeAbility(scn::step::hero::AbilityKind abilityKind, bool unk);
+
+        // Returns if the manager is able to discard its current ability
+        bool canDiscard();
+
+        bool tryToChangeState();
+        
+
     public:
         scn::step::hero::Hero* hero;
+        scn::step::Component* component;
+        mem::ExplicitScopedPtr<AbilityBase> currentAbility;
+        mem::ExplicitScopedPtr<void> _10;
+        scn::step::hero::AbilityKind currentAbilityKind;
+        bool abilityLocked;
+        u8 pad1[3];
+        u32 _20;
+        u32 useCount;
+        u32 superAbilityTimer;
+
+
+        
     };
 }
 }

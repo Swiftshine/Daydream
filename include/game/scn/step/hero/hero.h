@@ -55,8 +55,7 @@ namespace Constant {
     public:
         // offset, len
         scn::step::Component* component;
-        void* heapExpArrayUser;
-        void* _8;                                   // 0x8, 0x4
+        mem::ExplicitScopedPtr<AbilityBase> ability; // 0x4, 0x8
         u32 inputFlags;                             // 0xC, 0x4
         
         mem::ExplicitScopedPtr<AbilityManager> abilityManager; // 0x11C, 0x8
@@ -104,7 +103,7 @@ namespace Constant {
         u16 pad2;
         u8 bombWeaponManager[0x15C];
         u32 _39C;
-        void* lightObj3;
+        u32** globalUseCount;
         u8 _3A4;
         u8 _3A5;
         u16 pad3;
