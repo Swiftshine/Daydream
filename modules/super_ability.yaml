@@ -1,0 +1,6 @@
+---
+Region:
+  - "USA"
+CPP: []
+ASM:
+  - "src/infinite_super_ability.s"
