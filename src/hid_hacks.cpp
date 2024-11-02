@@ -1,6 +1,6 @@
 #include "kamek/kamek.h"
-
-#include "game/object/hero/hero.h"
+#include "game/scn/step/hero/hero.h"
+#include "game/scn/step/hero/hid.h"
 
 bool printButtonInputs(scn::step::hero::Hid* hid, u32 inputFlags) {
     if (hid->buttonFlags == 0)
